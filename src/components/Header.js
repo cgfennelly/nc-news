@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 const Header = () => {
 
     return (
-        <Link to={'/'} >
-            <h1>nc-news</h1>
-        </Link>
+        <header className="header">
+            <Link to={'/'} >
+                <h1>nc-news</h1>
+            </Link>
+        </header>
     )
 }
 

@@ -1,10 +1,25 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { getTopics } from "../api";
+import { Link, useParams } from "react-router-dom";
+import { getTopics, getArticles, getQueryArticles } from "../api";
 
-const Nav = () => {
+const Nav = ({ setArticles }) => {
 
     const [topics, setTopics] = useState([]);
+    // const [selectedTopic, setSelectedTopic] = useState('');
+    // let { topic } = useParams();
+    // console.log(selectedTopic, "TOPIC NAV BAR")
+
+    const handleClick = (e) => {
+        // const topic = e.target.id;
+        // console.log(e.target.id);
+        // setSelectedTopic(topic);
+
+        console.log(e.target.textContent)
+        getQueryArticles(e.target.textContent)
+            .then((res) => {
+                setArticles(res)
+            });
+    }
 
     useEffect(() => {
         getTopics()
@@ -21,12 +36,18 @@ const Nav = () => {
     }, []);
 
     return (
-        <nav>
+        <nav className="nav">
+
             {topics.map((topic) => {
+                console.log(topic)
                 return (
-                <Link key={topic} to={`articles/${topic}`} >
-                    {topic}
-                </Link>
+
+                    <div key={topic} value={topic} className="topic-card" onClick={handleClick}>
+                        <p>
+                            {topic}
+                        </p>
+                    </div>
+
                 );
             })}
         </nav>

@@ -11,7 +11,15 @@ export const getTopics = () => {
 };
 
 export const getArticles = () => {
-    return ncNewsApi.get('/articles').then((res) => {
+    return ncNewsApi.get('/articles')
+    .then((res) => {
         return res.data.articles;
     });
 };
+
+export const getQueryArticles = (slug) => {
+    return slug === "All topics" ? getArticles : ncNewsApi.get(`/articles?topic=${slug}`)
+    .then((res) => {
+        return res.data.articles;
+    })
+}

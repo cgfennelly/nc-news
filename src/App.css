@@ -1,3 +1,48 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: min-content min-content auto;
+  grid-template-areas: 
+    'header'
+    'nav'
+    'articles';
 }
+
+.header {
+  border: solid red 1px;
+  grid-area: header;
+  font-size: x-large;
+}
+
+.nav {
+  border: solid blue 1px;
+  grid-area: nav;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.articles {
+  border: solid green 1px;
+  grid-area: articles;
+  font-size: small;
+}
+
+.topic-card {
+  border: solid black 1px;
+  font-size: 40px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 15px;
+}
+
+.article-card {
+  border: solid grey 1px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 15px;
+}
+

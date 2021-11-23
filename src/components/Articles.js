@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getArticles } from "../api";
 
-const Articles = () => {
+const Articles = ({articles, setArticles}) => {
 
-    const [articles, setArticles] = useState([]);
+    //const [articles, setArticles] = useState([]);
+    //let { topic } = useParams();
+    //console.log(topic, "IS THIS TOPIC HERE");
+
 
     useEffect(() => {
         getArticles()
@@ -17,14 +20,16 @@ const Articles = () => {
     }, [])
 
     return (
-        <main>
+        <main className="articles">
             <h2>Articles</h2>
             <div>
                 {articles.map((article) => {
                     return (
-                        <Link key={`${article.article_id}`} to={`/articles/${article.article_id}`} >
-                            <p>{article.title}</p>
-                        </Link>
+                        <div className="article-card">
+                            <Link key={`${article.article_id}`} to={`/articles/${article.article_id}`} >
+                                <p>{article.title}</p>
+                            </Link>
+                        </div>
                     )
                 })}
             </div>
