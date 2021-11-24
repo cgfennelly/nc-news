@@ -10,8 +10,8 @@ export const getTopics = () => {
     });
 };
 
-export const getArticles = () => {
-    return ncNewsApi.get('/articles')
+export const getArticles = (topic) => {
+    return ncNewsApi.get('/articles', {params: {topic: topic}})
     .then((res) => {
         return res.data.articles;
     });
@@ -21,5 +21,12 @@ export const getQueryArticles = (slug) => {
     return slug === "All topics" ? getArticles : ncNewsApi.get(`/articles?topic=${slug}`)
     .then((res) => {
         return res.data.articles;
+    })
+}
+
+export const getSingleArticleById = (article_id) => {
+    return ncNewsApi.get(`/articles/${article_id}`)
+    .then((res) => {
+        return res.data.article[0];
     })
 }

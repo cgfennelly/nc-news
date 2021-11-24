@@ -39,11 +39,48 @@
   border-radius: 15px;
 }
 
-.article-card {
+.article-mini-card {
   border: solid grey 1px;
   padding: 5px;
   margin: 5px;
   border-radius: 15px;
+}
+
+
+.article-max-card {
+  border: solid grey 1px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 15px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: min-content min-content min-content;
+  grid-template-areas: 
+    'article-header'
+    'article-meta'
+    'article-body';
+}
+
+.article-header {
+  border: red solid 1px;
+  grid-area: article-header;
+}
+
+.article-meta {
+  border: rgb(0, 26, 255) solid 1px;
+  grid-area: article-meta;
+  font-size: x-small;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column: 1fr 1fr;
+}
+
+.article-body {
+  border: rgb(0, 255, 34) solid 1px;
+  grid-area: article-body;
+  font-size: small;
+
 }
 
 .cooking {
