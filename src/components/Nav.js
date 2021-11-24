@@ -1,33 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { getTopics, getArticles, getQueryArticles } from "../api";
+import { Link } from "react-router-dom";
+import { getTopics, getQueryArticles } from "../api";
 
-const Nav = ({ setArticles }) => {
+const Nav = ({ setArticles, setSelectedTopic }) => {
 
     const [topics, setTopics] = useState([]);
-    // const [selectedTopic, setSelectedTopic] = useState('');
-    // let { topic } = useParams();
-    // console.log(selectedTopic, "TOPIC NAV BAR")
-
-    const handleClick = (e) => {
-        // const topic = e.target.id;
-        // console.log(e.target.id);
-        // setSelectedTopic(topic);
-
-        console.log(e.target.textContent)
-        getQueryArticles(e.target.textContent)
-            .then((res) => {
-                setArticles(res)
-            });
-    }
 
     useEffect(() => {
         getTopics()
             .then((topics) => {
                 const refreshTopics = [];
-                topics.forEach(topic => {
-                    refreshTopics.push(topic.slug);
-                });
+                topics.forEach(topic => refreshTopics.push(topic.slug) );
                 setTopics(refreshTopics);
             })
             .catch((err) => {
@@ -35,19 +18,21 @@ const Nav = ({ setArticles }) => {
             });
     }, []);
 
+    const handleClick = (e) => {
+        setSelectedTopic(e.target.textContent)
+        getQueryArticles(e.target.textContent)
+            .then((res) => {
+                setArticles(res)
+            });
+    }
+
     return (
         <nav className="nav">
-
             {topics.map((topic) => {
-                console.log(topic)
                 return (
-
-                    <div key={topic} value={topic} className="topic-card" onClick={handleClick}>
-                        <p>
-                            {topic}
-                        </p>
-                    </div>
-
+                    <Link key={topic} to={`/${topic}`} onClick={handleClick} className={`topic-card ${topic}`}>
+                            <p>{topic}</p>
+                    </Link>
                 );
             })}
         </nav>

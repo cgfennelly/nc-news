@@ -46,3 +46,15 @@
   border-radius: 15px;
 }
 
+.cooking {
+  background-color: rgba(255, 235, 205, 0.323);
+}
+
+.football {
+  background-color: rgba(210, 255, 193, 0.309);
+}
+
+.coding {
+  background-color: rgba(245, 205, 255, 0.302);
+}
+

@@ -8,16 +8,15 @@ import { useState } from 'react';
 
 function App() {
   const [articles, setArticles] = useState([]);
-  
+  const [selectedTopic, setSelectedTopic] = useState(null);
   return (
     <BrowserRouter>
       <div className="App">
-        <Nav setArticles = {setArticles} />
+        <Header setSelectedTopic={setSelectedTopic}/>
         <Routes>
-          <Route path='/' element={<Header />} />
-          <Route path='/articles' element={<Articles articles={articles} setArticles = {setArticles} />} />
+          <Route path='/' element={<><Nav setArticles = {setArticles} selectedTopic = {selectedTopic} setSelectedTopic = {setSelectedTopic} /><Articles articles={articles} setArticles = {setArticles} /></>} />
+          <Route path='/:topic' element={<Articles articles={articles} setArticles = {setArticles} selectedTopic = {selectedTopic} />} />
         </Routes>
-        
       </div>
     </BrowserRouter>
   );
