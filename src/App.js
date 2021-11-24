@@ -9,15 +9,14 @@ import { useState } from 'react';
 
 function App() {
   const [articles, setArticles] = useState([]);
-  const [selectedTopic, setSelectedTopic] = useState(null);
 
   return (
     <BrowserRouter>
       <div className="App">
-        <Header setSelectedTopic={setSelectedTopic}/>
+        <Header />
         <Routes>
-          <Route path='/' element={<><Nav setArticles = {setArticles} selectedTopic = {selectedTopic} setSelectedTopic = {setSelectedTopic} /><Articles articles={articles} setArticles = {setArticles} /></>} />
-          <Route path='/:topic' element={<Articles articles={articles} setArticles = {setArticles} selectedTopic = {selectedTopic} />} />
+          <Route path='/' element={<><Nav setArticles={setArticles} /><Articles articles={articles} setArticles={setArticles} /></>} />
+          <Route path='/:topic' element={<Articles articles={articles} setArticles={setArticles} />} />
           <Route path='articles/:article_id' element={<SingleArticle />} />
         </Routes>
       </div>

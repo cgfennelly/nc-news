@@ -1,14 +1,10 @@
 import { Link } from "react-router-dom";
 
-const Header = ({ setSelectedTopic }) => {
-
-    const handleClick = () => {
-        setSelectedTopic(null)
-    }
+const Header = () => {
 
     return (
         <header className="header">
-            <Link to={'/'} onClick={handleClick}>
+            <Link to={'/'} >
                 <h1>nc-news</h1>
             </Link>
         </header>

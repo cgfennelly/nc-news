@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
-import { getArticles, getQueryArticles } from "../api";
+import { getArticles } from "../api";
 
-const Articles = ({articles, setArticles, selectedTopic}) => {
+const Articles = ({articles, setArticles}) => {
     const [isLoading, setLoading] = useState(true);
     const { topic } = useParams()
 
+
+
     useEffect(() => {
-        if (!selectedTopic) {
             setLoading(true);
-            getArticles()
+            getArticles(topic)
             .then(articles => {
                 setLoading(false);
                 setArticles(articles);
@@ -19,25 +20,12 @@ const Articles = ({articles, setArticles, selectedTopic}) => {
                 setLoading(false);
                 console.log(err);
             });
-        } else {
-            setLoading(true);
-            getQueryArticles(topic)
-            .then(articles => {
-                setLoading(false);
-                setArticles(articles);
-            })
-            .catch(err => {
-                setLoading(false);
-                console.log(err);
-            });
-        }
-    }, [topic, setArticles])
+    }, [setArticles, topic])
 
     if (isLoading) return <p>loading...</p>
 
     return (
         <main className="articles">
-            <h2>{!selectedTopic ? "Articles" : `${selectedTopic} articles`}</h2>
             <div>
                 {articles.map((article) => {
                     return (

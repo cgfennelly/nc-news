@@ -17,13 +17,6 @@ export const getArticles = (topic) => {
     });
 };
 
-export const getQueryArticles = (slug) => {
-    return slug === "All topics" ? getArticles : ncNewsApi.get(`/articles?topic=${slug}`)
-    .then((res) => {
-        return res.data.articles;
-    })
-}
-
 export const getSingleArticleById = (article_id) => {
     return ncNewsApi.get(`/articles/${article_id}`)
     .then((res) => {

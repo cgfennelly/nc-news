@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getTopics, getQueryArticles } from "../api";
+import { getTopics } from "../api";
 
-const Nav = ({ setArticles, setSelectedTopic }) => {
-
+const Nav = () => {
     const [topics, setTopics] = useState([]);
 
     useEffect(() => {
@@ -18,19 +17,11 @@ const Nav = ({ setArticles, setSelectedTopic }) => {
             });
     }, []);
 
-    const handleClick = (e) => {
-        setSelectedTopic(e.target.textContent)
-        getQueryArticles(e.target.textContent)
-            .then((res) => {
-                setArticles(res)
-            });
-    }
-
     return (
         <nav className="nav">
             {topics.map((topic) => {
                 return (
-                    <Link key={topic} to={`/${topic}`} onClick={handleClick} className={`topic-card ${topic}`}>
+                    <Link key={topic} to={`/${topic}`} className={`topic-card ${topic}`}>
                             <p>{topic}</p>
                     </Link>
                 );
