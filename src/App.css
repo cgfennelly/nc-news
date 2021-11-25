@@ -73,6 +73,18 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column: 1fr 1fr;
+  grid-template-areas: 
+    'article-author'
+    'article-date'
+    'article-vote'
+    'article-topic';
+}
+
+.article-vote {
+  border:rgb(255, 0, 170) solid 1px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: medium;
 }
 
 .article-body {

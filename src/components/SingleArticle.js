@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getSingleArticleById, getSingleArticleComments } from "../api";
-
+import ArticleVote from "./ArticleVote";
 
 
 const SingleArticle = () => {
@@ -32,7 +32,8 @@ const SingleArticle = () => {
                 <div className="article-meta">
                     <p>{article.author}</p>
                     <p>{article.created_at}</p>
-                    <p>{article.votes}</p>
+                    <ArticleVote article_id={article_id} votes={article.votes}/>
+                    
                     <p>{article.topic}</p>
                 </div>
                 <p className="article-body">{article.body}</p>

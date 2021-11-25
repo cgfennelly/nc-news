@@ -30,3 +30,10 @@ export const getSingleArticleComments = (article_id) => {
         return res.data.comments;
     })
 }
+
+export const addVoteArticle = (article_id) => {
+    return ncNewsApi.patch(`/articles/${article_id}`, {inc_votes: 1})
+    .then((res) => {
+        return res.data.article[0];
+    })
+}
