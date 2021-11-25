@@ -52,7 +52,6 @@
   padding: 5px;
   margin: 5px;
   border-radius: 15px;
-  min-height: 100vh;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: min-content min-content min-content;
@@ -80,6 +79,44 @@
   border: rgb(0, 255, 34) solid 1px;
   grid-area: article-body;
   font-size: small;
+}
+
+.comment-container {
+  border: rgb(255, 0, 13) solid 1px;
+  display: grid;
+  font-size: xx-small;
+  color: rgba(0, 0, 0, 0.61);
+  justify-content: center;
+  grid-template-columns: 85%;
+}
+
+.comment-card {
+  border: rgb(255, 0, 170) solid 1px;
+  display: grid;
+  font-size: xx-small;
+  color: rgba(0, 0, 0, 0.61);
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 15px;
+  grid-template-rows: min-content min-content;
+  grid-template-areas: 
+    'comment-body'
+    'comment-meta';
+}
+
+.comment-body {
+  border: chartreuse solid 1px;
+  grid-area: comment-body;
+}
+
+.comment-meta {
+  border: rgb(25, 0, 255) solid 1px;
+  grid-area: comment-meta;
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  text-align: right;
+  padding-right: 15px;
 
 }
 

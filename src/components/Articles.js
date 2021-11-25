@@ -5,24 +5,31 @@ import { getArticles } from "../api";
 
 const Articles = ({articles, setArticles}) => {
     const [isLoading, setLoading] = useState(true);
-    const { topic } = useParams()
-
+    const [err, setErr] = useState(null);
+    const { topic } = useParams();
 
 
     useEffect(() => {
+            setErr(null)
             setLoading(true);
             getArticles(topic)
             .then(articles => {
                 setLoading(false);
                 setArticles(articles);
             })
-            .catch(err => {
+            .catch((err) => {
                 setLoading(false);
-                console.log(err);
+                
+                if (err.response.status === 400) {
+                    setErr("This topic does not exist! Try another.");
+                } else {
+                    setErr("Something went wrong!");
+                }
             });
     }, [setArticles, topic])
 
     if (isLoading) return <p>loading...</p>
+    if (err) return <p>{err}</p>
 
     return (
         <main className="articles">
