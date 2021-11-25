@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getSingleArticleById, getSingleArticleComments } from "../api";
 import ArticleVote from "./ArticleVote";
+import PostComment from "./PostComment";
 
 
 const SingleArticle = () => {
@@ -38,6 +39,7 @@ const SingleArticle = () => {
                 </div>
                 <p className="article-body">{article.body}</p>
             </main>
+            <PostComment article_id={article_id}/>
             <section className='comment-container'>
                 {articleComments.map((comment) => {
                     return (
