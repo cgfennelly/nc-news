@@ -50,11 +50,11 @@ const SingleArticle = () => {
                                 <p className='comment-body'>{comment.body}</p>
                                 <div className='comment-meta'>
                                     <p>{comment.votes}</p>
-                                    <div className='comment-meta-delete'>
-                                        <button onClick={() => {
+                                    <div className='comment-meta-user'>
+                                        <p>{comment.author}</p>
+                                        <button className='comment-meta-delete' onClick={() => {
                                             deleteComment(comment.comment_id)
                                         }}>Delete</button>
-                                        <p>{comment.author}</p>
                                     </div>
                                 </div>
                             </div>

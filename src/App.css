@@ -19,17 +19,22 @@
   grid-template-areas: 
     'header-user'
     'header-main';
-  
 }
 
 .header-user {
   border: blue solid 1px;
   grid-area: header-user;
+  font-size: medium;
+  text-align: right;
+  padding-right: 15px;
+  padding-top: 5px;
+  margin: 0px;
 }
 
 .header-main {
   border: rgb(93, 93, 145) solid 1px;
   grid-area: header-main;
+  
 }
 
 .nav {
@@ -100,8 +105,15 @@
 .article-vote {
   border:rgb(255, 0, 170) solid 1px;
   display: grid;
+  width: 50%;
+  margin-left: 100px;
   grid-template-columns: 1fr 1fr;
-  font-size: medium;
+  font-size: large;
+}
+
+.article-vote-button {
+  border: lightcoral solid 3px;
+  margin: 10px;
 }
 
 .article-body {
@@ -146,10 +158,25 @@
   grid-template-columns: 1fr 7fr;
   text-align: right;
   padding-right: 15px;
+  grid-template-areas: 
+    'comment-meta-votes'
+    'comment-meta-delete';
+}
+
+.comment-meta-user {
+  display: grid;
+  font-size: 24px;
+  grid-template-columns: 8fr 1fr;
+  border:rgb(255, 0, 13) solid 1px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .comment-meta-delete {
-  display: inline;
+  border: lawngreen solid 1px;
+  height: 25px;
+  padding: 0px;
+  margin: 0px;
 }
 
 .post-comment {
@@ -162,7 +189,6 @@
   margin: 5px;
   border-radius: 15px;
   grid-template-rows: 100px;
-  grid-template-columns: 7fr 1fr;
   grid-template-areas: 
     'post-comment-field' 'post-comment-button';
 }
@@ -181,6 +207,7 @@
   background-color: #555555;
   grid-area: post-comment-button;
   border: none;
+  border-radius: 10px;
   color: white;
   padding: 15px 32px;
   text-align: center;

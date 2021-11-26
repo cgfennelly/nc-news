@@ -6,8 +6,8 @@ const ArticleVote = ({ article_id, votes }) => {
 
     return (
         <div className='article-vote'>
-            <p>{votes + voteModifier}</p>
-            <button 
+            <p>votes: {votes + voteModifier}</p>
+            <button className='article-vote-button'
             onClick={() => { 
                 addVoteArticle(article_id)
                 .catch((err) => {

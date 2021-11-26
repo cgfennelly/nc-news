@@ -10,54 +10,96 @@ const PostComment = ({ article_id }) => {
     const [err, setErr] = useState(null);
     const userToAdd = user.username
 
-    return (
-        <div >
-            <form className="post-comment"
-                onSubmit={(e) => {
-                    e.preventDefault();
-                }}>
-                <input className="post-comment-field"
-                    value={input}
-                    onChange={(e) => {
-                        setInput(e.target.value)
-                    }}
-                    type="text"
-                ></input>
-
-
-                <button className="post-comment-button"
-                    onClick={() => {
-                        setErr(null);
-                        postCommentArticle(article_id, userToAdd, input)
-                            .then((res) => {
-                                setPostedComment(res)
-                            })
-                            .catch((err) => {
-                                if (err.response.status === 400) {
-                                    setErr("Please add a comment to submit.");
-                                } else {
-                                    setErr("Something went wrong!");
-                                }
-                            });
+    if (Object.keys(postedComment).length > 0) {
+        return (
+            <div >
+                <form className="post-comment"
+                    onSubmit={(e) => {
+                        e.preventDefault();
                     }}>
-                    Post comment
-                </button>
-            </form>
-            <p>{err}</p>
-            <div className='comment-card'>
-                <p className='comment-body'>{postedComment.body}</p>
-                <div className='comment-meta'>
-                    <p>{postedComment.votes}</p>
-                    <div className='comment-meta-delete'>
-                        <button onClick={() => {
-                            deleteComment(postedComment.comment_id)
-                        }}>Delete</button>
-                        <p>{postedComment.author}</p>
+                    <input className="post-comment-field"
+                        value={input}
+                        onChange={(e) => {
+                            setInput(e.target.value)
+                        }}
+                        type="text"
+                    ></input>
+    
+    
+                    <button className="post-comment-button"
+                        onClick={() => {
+                            setErr(null);
+                            postCommentArticle(article_id, userToAdd, input)
+                                .then((res) => {
+                                    setPostedComment(res)
+                                })
+                                .catch((err) => {
+                                    if (err.response.status === 400) {
+                                        setErr("Please add a comment to submit.");
+                                    } else {
+                                        setErr("Something went wrong!");
+                                    }
+                                });
+                            setInput('');
+                        }}>
+                        Post comment
+                    </button>
+                </form>
+                <p>{err}</p>
+                <div className='comment-card'>
+                    <p className='comment-body'>{postedComment.body}</p>
+                    <div className='comment-meta'>
+                        <p>{postedComment.votes}</p>
+                        <div className='comment-meta-user'>
+                            <button className='comment-meta-delete' onClick={() => {
+                                deleteComment(postedComment.comment_id)
+                            }}>Delete</button>
+                            <p>{postedComment.author}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <div >
+                <form className="post-comment"
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                    }}>
+                    <input className="post-comment-field"
+                        value={input}
+                        onChange={(e) => {
+                            setInput(e.target.value)
+                        }}
+                        type="text"
+                    ></input>
+    
+    
+                    <button className="post-comment-button"
+                        onClick={() => {
+                            setErr(null);
+                            postCommentArticle(article_id, userToAdd, input)
+                                .then((res) => {
+                                    setPostedComment(res)
+                                })
+                                .catch((err) => {
+                                    if (err.response.status === 400) {
+                                        setErr("Please add a comment to submit.");
+                                    } else {
+                                        setErr("Something went wrong!");
+                                    }
+                                });
+                            setInput('');
+                        }}>
+                        Post comment
+                    </button>
+                </form>
+            </div>
+        )
+    }
+
+   
 }
 
 export default PostComment;
