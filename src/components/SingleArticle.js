@@ -10,6 +10,7 @@ const SingleArticle = () => {
     const [article, setArticle] = useState({});
     const [articleComments, setArticleComments] = useState([]);
     const [isLoading, setLoading] = useState(true);
+    const [commentDeleted, setCommentDeleted] = useState('');
     const { article_id } = useParams();
     const { user } = useContext(UserContext);
 
@@ -44,7 +45,18 @@ const SingleArticle = () => {
             <PostComment article_id={article_id} />
             <section className='comment-container'>
                 {articleComments.map((comment) => {
-                    if (user.username === comment.author) {
+                    if (commentDeleted === comment.comment_id) {
+                        return (
+                            <div key={comment.comment_id} className='comment-card'>
+                                <p className='comment-body'>Comment deleted</p>
+                                <div className='comment-meta'>
+                                    <p> </p>
+                                    <p>{comment.author}</p>
+                                </div>
+                            </div>
+                        )
+                    }
+                    else if (user.username === comment.author) {
                         return (
                             <div key={comment.comment_id} className='comment-card'>
                                 <p className='comment-body'>{comment.body}</p>
@@ -54,6 +66,7 @@ const SingleArticle = () => {
                                         <p>{comment.author}</p>
                                         <button className='comment-meta-delete' onClick={() => {
                                             deleteComment(comment.comment_id)
+                                            setCommentDeleted(comment.comment_id)
                                         }}>Delete</button>
                                     </div>
                                 </div>

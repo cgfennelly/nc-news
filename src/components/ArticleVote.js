@@ -3,11 +3,14 @@ import { addVoteArticle } from "../api";
 
 const ArticleVote = ({ article_id, votes }) => {
     const [voteModifier, setVoteModifier] = useState(0);
+    const [buttonActivated, setButtonActivated] = useState(true)
+
+    console.log(buttonActivated)
 
     return (
         <div className='article-vote'>
             <p>votes: {votes + voteModifier}</p>
-            <button className='article-vote-button'
+            <button disabled={!buttonActivated} className='article-vote-button'
             onClick={() => { 
                 addVoteArticle(article_id)
                 .catch((err) => {
@@ -15,7 +18,8 @@ const ArticleVote = ({ article_id, votes }) => {
                 });
                 setVoteModifier((voteModifier) => {
                     return voteModifier + 1;
-                })
+                });
+                setButtonActivated(false);
                 }}>Like!</button>
         </div>
     )
