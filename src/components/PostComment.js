@@ -1,21 +1,22 @@
 import { useContext } from "react";
 import { useState } from "react/cjs/react.development";
-import { postCommentArticle } from "../api";
+import { postCommentArticle, deleteComment } from "../api";
 import { UserContext } from "../context/User"
 
 const PostComment = ({ article_id }) => {
     const { user } = useContext(UserContext);
     const [input, setInput] = useState('')
     const [postedComment, setPostedComment] = useState({});
+    const [err, setErr] = useState(null);
     const userToAdd = user.username
 
     return (
-        <div>
-            <form
+        <div >
+            <form className="post-comment"
                 onSubmit={(e) => {
                     e.preventDefault();
                 }}>
-                <input
+                <input className="post-comment-field"
                     value={input}
                     onChange={(e) => {
                         setInput(e.target.value)
@@ -24,24 +25,35 @@ const PostComment = ({ article_id }) => {
                 ></input>
 
 
-                <button
+                <button className="post-comment-button"
                     onClick={() => {
+                        setErr(null);
                         postCommentArticle(article_id, userToAdd, input)
                             .then((res) => {
                                 setPostedComment(res)
                             })
                             .catch((err) => {
-                                console.log("there is an error")
+                                if (err.response.status === 400) {
+                                    setErr("Please add a comment to submit.");
+                                } else {
+                                    setErr("Something went wrong!");
+                                }
                             });
                     }}>
                     Post comment
                 </button>
             </form>
+            <p>{err}</p>
             <div className='comment-card'>
                 <p className='comment-body'>{postedComment.body}</p>
                 <div className='comment-meta'>
                     <p>{postedComment.votes}</p>
-                    <p>{postedComment.author}</p>
+                    <div className='comment-meta-delete'>
+                        <button onClick={() => {
+                            deleteComment(postedComment.comment_id)
+                        }}>Delete</button>
+                        <p>{postedComment.author}</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getSingleArticleById, getSingleArticleComments } from "../api";
+import { deleteComment, getSingleArticleById, getSingleArticleComments } from "../api";
+import { UserContext } from "../context/User";
 import ArticleVote from "./ArticleVote";
 import PostComment from "./PostComment";
 
@@ -10,6 +11,7 @@ const SingleArticle = () => {
     const [articleComments, setArticleComments] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const { article_id } = useParams();
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
         setLoading(true);
@@ -33,24 +35,43 @@ const SingleArticle = () => {
                 <div className="article-meta">
                     <p>{article.author}</p>
                     <p>{article.created_at}</p>
-                    <ArticleVote article_id={article_id} votes={article.votes}/>
-                    
+                    <ArticleVote article_id={article_id} votes={article.votes} />
+
                     <p>{article.topic}</p>
                 </div>
                 <p className="article-body">{article.body}</p>
             </main>
-            <PostComment article_id={article_id}/>
+            <PostComment article_id={article_id} />
             <section className='comment-container'>
                 {articleComments.map((comment) => {
-                    return (
-                        <div key={comment.comment_id} className='comment-card'>
-                            <p className='comment-body'>{comment.body}</p>
-                            <div className='comment-meta'>
-                                <p>{comment.votes}</p>
-                                <p>{comment.author}</p>
+                    if (user.username === comment.author) {
+                        return (
+                            <div key={comment.comment_id} className='comment-card'>
+                                <p className='comment-body'>{comment.body}</p>
+                                <div className='comment-meta'>
+                                    <p>{comment.votes}</p>
+                                    <div className='comment-meta-delete'>
+                                        <button onClick={() => {
+                                            deleteComment(comment.comment_id)
+                                        }}>Delete</button>
+                                        <p>{comment.author}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    )
+                        )
+                    }
+                    else {
+                        return (
+                            <div key={comment.comment_id} className='comment-card'>
+                                <p className='comment-body'>{comment.body}</p>
+                                <div className='comment-meta'>
+                                    <p>{comment.votes}</p>
+                                    <p>{comment.author}</p>
+                                </div>
+                            </div>
+                        )
+                    }
+
                 })}
             </section>
         </>

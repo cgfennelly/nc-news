@@ -146,7 +146,47 @@
   grid-template-columns: 1fr 7fr;
   text-align: right;
   padding-right: 15px;
+}
 
+.comment-meta-delete {
+  display: inline;
+}
+
+.post-comment {
+  border: rgb(255, 0, 170) solid 1px;
+  display: grid;
+  font-size: xx-small;
+  color: rgba(0, 0, 0, 0.61);
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 15px;
+  grid-template-rows: 100px;
+  grid-template-columns: 7fr 1fr;
+  grid-template-areas: 
+    'post-comment-field' 'post-comment-button';
+}
+
+.post-comment-field {
+  border: blueviolet solid 1px;
+  grid-area: post-comment-field;
+  grid-template-columns: 100%;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+}
+
+.post-comment-button {
+  background-color: #555555;
+  grid-area: post-comment-button;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
 }
 
 .cooking {
