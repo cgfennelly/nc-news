@@ -20,7 +20,6 @@ const SingleArticle = () => {
             .then((res) => {
                 setLoading(false);
                 setArticle(res)
-                console.log("times running")
             })
         getSingleArticleComments(article_id)
             .then((res) => {
