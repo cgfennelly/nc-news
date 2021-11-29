@@ -11,7 +11,7 @@ export const getTopics = () => {
 };
 
 export const getArticles = (topic) => {
-    return ncNewsApi.get('/articles', {params: {topic: topic}})
+    return ncNewsApi.get('/articles', {params: {topic: topic},})
     .then((res) => {
         return res.data.articles;
     });
@@ -50,4 +50,11 @@ export const deleteComment = (comment_id) => {
     .then((res) => {
         return res;
     })
+}
+
+export const getArticlesByVotesAsc = () => {
+    return ncNewsApi.get('/articles?sort_by=votes&order=ASC')
+    .then((res) => {
+        return res.data.articles;
+    });
 }

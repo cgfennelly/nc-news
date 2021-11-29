@@ -25,7 +25,7 @@ const SingleArticle = () => {
             .then((res) => {
                 setArticleComments(res);
             })
-    }, [article_id])
+    }, [article_id, setArticle])
 
     if (isLoading) return <p>loading...</p>
 

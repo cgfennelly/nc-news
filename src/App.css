@@ -3,10 +3,11 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: min-content min-content auto;
+  grid-template-rows: min-content min-content min-content auto;
   grid-template-areas: 
     'header'
     'nav'
+    'sort'
     'articles';
 }
 
@@ -44,6 +45,46 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.sort-bar {
+  border: mediumpurple solid 4px;
+  grid-area: sort;
+  display: grid;
+
+  grid-template-areas: 
+    "sort-date-up sort-comments-up sort-votes-up"
+    "sort-date-down sort-comments-down sort-votes-down";
+}
+
+.sort-date-up {
+  border: mediumpurple solid 4px;
+  grid-area: sort-date-up;
+}
+
+.sort-comments-up {
+  border: mediumpurple solid 4px;
+  grid-area: sort-comments-up;
+}
+
+.sort-votes-up {
+  border: mediumpurple solid 4px;
+  grid-area: sort-votes-up;
+}
+
+.sort-date-down {
+  border: mediumpurple solid 4px;
+  grid-area: sort-date-down;
+}
+
+.sort-comments-down {
+  border: mediumpurple solid 4px;
+  grid-area: sort-comments-down;
+}
+
+.sort-votes-down {
+  border: mediumpurple solid 4px;
+  grid-area: sort-votes-down;
 }
 
 .articles {
