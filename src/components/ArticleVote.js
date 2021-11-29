@@ -1,4 +1,4 @@
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import { addVoteArticle } from "../api";
 
 const ArticleVote = ({ article_id, votes }) => {
