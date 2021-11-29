@@ -24,6 +24,7 @@ const SingleArticle = () => {
         getSingleArticleComments(article_id)
             .then((res) => {
                 setArticleComments(res);
+                
             })
     }, [article_id, setArticle, setArticleComments])
 
