@@ -1,5 +1,5 @@
 
-# CF's Interesting News site! React project.
+# CF's "Interesting News" site! React project.
 
 ## Summary
 
