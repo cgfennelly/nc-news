@@ -7,12 +7,12 @@ const Header = () => {
 
     return (
         <header className="header">
-            
+            <div>
                 <Link to={'/'} >
                     <h1 className='header-main'>nc-news</h1>
                 </Link>
+            </div>
                 <p className='header-user'>Logged in: {user.username}</p>
-            
         </header>
     )
 }

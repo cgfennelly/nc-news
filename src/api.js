@@ -51,10 +51,3 @@ export const deleteComment = (comment_id) => {
         return res;
     })
 }
-
-export const getArticlesByVotesAsc = () => {
-    return ncNewsApi.get('/articles?sort_by=votes&order=ASC')
-    .then((res) => {
-        return res.data.articles;
-    });
-}
