@@ -26,9 +26,7 @@ a:visited {
 }
 
 .header {
-  border: solid red 1px;
   grid-area: header;
-  
   display: grid;
   grid-template-rows: min-content min-content;
   grid-template-areas: 
@@ -38,7 +36,6 @@ a:visited {
 }
 
 .header-user {
-  border: blue solid 1px;
   grid-area: header-user;
   font-size: xx-small;
   color: #555555;
@@ -49,14 +46,14 @@ a:visited {
 }
 
 .header-main {
-  border: rgb(93, 93, 145) solid 1px;
   grid-area: header-main;
   font-size: 75px;
   font-weight: 700;
 }
 
 .nav {
-  border: solid blue 1px;
+  border-top: thin solid #555555;
+  border-bottom: thin solid #555555;
   background: #c9ccd52f;
   grid-area: nav;
   display: flex;
@@ -66,7 +63,6 @@ a:visited {
 }
 
 .articles {
-  border: solid green 1px;
   grid-area: articles;
   font-size: small;
 }
@@ -102,15 +98,13 @@ a:visited {
 }
 
 .article-header {
-  border: red solid 1px;
   grid-area: article-header;
 }
 
 
 .article-meta {
-  border: rgb(0, 26, 255) solid 1px;
   grid-area: article-meta;
-  font-size: 10px;
+  font-size: 9px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column: 1fr 1fr;
@@ -122,16 +116,14 @@ a:visited {
 }
 
 .article-vote {
-  border:rgb(255, 0, 170) solid 1px;
   display: grid;
   width: 50%;
   margin-left: 100px;
   grid-template-columns: 1fr 1fr;
-  font-size: 22px;
+  font-size: 23px;
 }
 
 .article-vote-button {
-  border: lightcoral solid 3px;
   background: #555555a3;
   margin: 15px 5px 15px 5px;
   font-size: 25px;
@@ -140,13 +132,11 @@ a:visited {
 }
 
 .article-body {
-  border: rgb(0, 255, 34) solid 1px;
   grid-area: article-body;
-  font-size: small;
+  font-size: 17px;
 }
 
 .comment-container {
-  border: rgb(255, 0, 13) solid 1px;
   display: grid;
   font-size: xx-small;
   color: rgba(0, 0, 0, 0.61);
@@ -171,12 +161,11 @@ a:visited {
 }
 
 .comment-body {
-  border: chartreuse solid 1px;
   grid-area: comment-body;
 }
 
 .comment-meta {
-  border: rgb(25, 0, 255) solid 1px;
+  border-top: thin solid #5555553f;
   font-size: 15px;
   grid-area: comment-meta;
   display: grid;
@@ -194,14 +183,12 @@ a:visited {
   font-size: 30px;
   color: rgba(0, 0, 0, 0.65);
   grid-template-columns: 8fr 1fr;
-  border:rgb(255, 0, 13) solid 1px;
   vertical-align: text-top;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
 }
 
 .comment-meta-delete {
-  border: lawngreen solid 1px;
   font-size: 20px;
   color: rgba(0, 0, 0, 0.8);
   border-radius: 10px;
@@ -212,7 +199,6 @@ a:visited {
 }
 
 .post-comment {
-  border: rgb(255, 0, 170) solid 1px;
   display: grid;
   font-size: xx-small;
   color: rgba(0, 0, 0, 0.61);
@@ -226,7 +212,6 @@ a:visited {
 }
 
 .post-comment-field {
-  border: blueviolet solid 1px;
   grid-area: post-comment-field;
   grid-template-columns: 100%;
   text-align: left;
