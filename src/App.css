@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
 .App {
   text-align: center;
   min-height: 100vh;
@@ -9,23 +11,37 @@
     'nav'
     'sort'
     'articles';
+  background-color: #fcefe4;
+  font-family: 'Poppins', sans-serif;
+}
+
+a:link {
+  text-decoration: none;
+  color: #2B2D2F;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #2b2d2fd3;
 }
 
 .header {
   border: solid red 1px;
   grid-area: header;
-  font-size: x-large;
+  
   display: grid;
   grid-template-rows: min-content min-content;
   grid-template-areas: 
     'header-user'
     'header-main';
+  background: #f8e4d2;
 }
 
 .header-user {
   border: blue solid 1px;
   grid-area: header-user;
-  font-size: medium;
+  font-size: xx-small;
+  color: #555555;
   text-align: right;
   padding-right: 15px;
   padding-top: 5px;
@@ -35,56 +51,18 @@
 .header-main {
   border: rgb(93, 93, 145) solid 1px;
   grid-area: header-main;
-  
+  font-size: 75px;
+  font-weight: 700;
 }
 
 .nav {
   border: solid blue 1px;
+  background: #c9ccd52f;
   grid-area: nav;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.sort-bar {
-  border: mediumpurple solid 4px;
-  grid-area: sort;
-  display: grid;
-
-  grid-template-areas: 
-    "sort-date-up sort-comments-up sort-votes-up"
-    "sort-date-down sort-comments-down sort-votes-down";
-}
-
-.sort-date-up {
-  border: mediumpurple solid 4px;
-  grid-area: sort-date-up;
-}
-
-.sort-comments-up {
-  border: mediumpurple solid 4px;
-  grid-area: sort-comments-up;
-}
-
-.sort-votes-up {
-  border: mediumpurple solid 4px;
-  grid-area: sort-votes-up;
-}
-
-.sort-date-down {
-  border: mediumpurple solid 4px;
-  grid-area: sort-date-down;
-}
-
-.sort-comments-down {
-  border: mediumpurple solid 4px;
-  grid-area: sort-comments-down;
-}
-
-.sort-votes-down {
-  border: mediumpurple solid 4px;
-  grid-area: sort-votes-down;
 }
 
 .articles {
@@ -96,15 +74,15 @@
 .topic-card {
   border: solid black 1px;
   font-size: 40px;
-  padding: 5px;
-  margin: 5px;
+  padding: 5px 50px 5px 50px;
+  margin: 5px 25px 5px 25px;
   border-radius: 15px;
 }
 
 .article-mini-card {
   border: solid grey 1px;
   padding: 5px;
-  margin: 5px;
+  margin: 25px 10px 25px 10px;
   border-radius: 15px;
 }
 
@@ -132,7 +110,7 @@
 .article-meta {
   border: rgb(0, 26, 255) solid 1px;
   grid-area: article-meta;
-  font-size: x-small;
+  font-size: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column: 1fr 1fr;
@@ -149,12 +127,16 @@
   width: 50%;
   margin-left: 100px;
   grid-template-columns: 1fr 1fr;
-  font-size: large;
+  font-size: 22px;
 }
 
 .article-vote-button {
   border: lightcoral solid 3px;
-  margin: 10px;
+  background: #555555a3;
+  margin: 15px 5px 15px 5px;
+  font-size: 25px;
+  border-radius: 10px;
+  color: white;
 }
 
 .article-body {
@@ -173,18 +155,19 @@
 }
 
 .comment-card {
-  border: rgb(255, 0, 170) solid 1px;
+  border: rgba(99, 99, 99, 0.645) solid 1px;
   display: grid;
-  font-size: xx-small;
+  font-size: 12px;
   color: rgba(0, 0, 0, 0.61);
   text-align: center;
   padding: 5px;
-  margin: 5px;
+  margin: 10px 5px 10px 5px;
   border-radius: 15px;
   grid-template-rows: min-content min-content;
   grid-template-areas: 
     'comment-body'
     'comment-meta';
+    background: #f7e6d8; 
 }
 
 .comment-body {
@@ -194,6 +177,7 @@
 
 .comment-meta {
   border: rgb(25, 0, 255) solid 1px;
+  font-size: 15px;
   grid-area: comment-meta;
   display: grid;
   grid-template-columns: 1fr 7fr;
@@ -201,23 +185,30 @@
   padding-right: 15px;
   grid-template-areas: 
     'comment-meta-votes'
-    'comment-meta-delete';
+    'comment-meta-user';
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .comment-meta-user {
   display: grid;
-  font-size: 24px;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.65);
   grid-template-columns: 8fr 1fr;
   border:rgb(255, 0, 13) solid 1px;
-  margin: 0px;
-  padding: 0px;
+  vertical-align: text-top;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
 }
 
 .comment-meta-delete {
   border: lawngreen solid 1px;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  background: #cacaca;
   height: 25px;
-  padding: 0px;
-  margin: 0px;
+  padding: 0px 10px 0px 10px;
+  margin: 45px 0px 0px 10px;
 }
 
 .post-comment {
@@ -258,14 +249,14 @@
 }
 
 .cooking {
-  background-color: rgba(255, 235, 205, 0.323);
+  background-color: #bdd2b6b6;
 }
 
 .football {
-  background-color: rgba(210, 255, 193, 0.309);
+  background-color: #a2b29fb2;
 }
 
 .coding {
-  background-color: rgba(245, 205, 255, 0.302);
+  background-color: #798777ad;
 }
 
