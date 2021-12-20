@@ -18,8 +18,10 @@ const SingleArticle = () => {
         setLoading(true);
         getSingleArticleById(article_id)
             .then((res) => {
+                let singleArticleData = res;
+                singleArticleData.created_at = res.created_at.slice(0, 10)
                 setLoading(false);
-                setArticle(res)
+                setArticle(singleArticleData)
             })
         getSingleArticleComments(article_id)
             .then((res) => {
